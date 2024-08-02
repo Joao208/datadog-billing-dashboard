@@ -1,0 +1,24 @@
+{
+  "id": 150258726,
+  "name": "[Logs] Number of Indexed Logs Exceeding 5M per Day",
+  "type": "log alert",
+  "query": "logs(\"*\").index(\"*\").rollup(\"count\").last(\"1d\") > 5000000",
+  "message": "{{#is_alert}}\n\nThe number of indexed logs has exceeded the limit of 5 million per day, which may result in unexpected additional charges.\n\n**How to investigate and resolve:**\n\n1. **Check the volume of indexed logs:** Use Datadog tools to review the daily volume of indexed logs.\n\n2. **Analyze log sources:** Identify which applications or services are generating a high volume of logs.\n\n3. **Optimize log generation:** Review log generation settings to reduce verbosity and disable unnecessary logs.\n\n4. **Implement log filters:** Consider implementing filters or rules to limit the volume of logs being indexed, focusing only on the most critical logs.\n\n5. **Monitor and adjust:** Continue monitoring the volume of indexed logs to avoid further exceedances and optimize log usage.\n\n{{/is_alert}}",
+  "tags": ["type:billing_monitor"],
+  "options": {
+    "thresholds": {
+      "critical": 5000000
+    },
+    "enable_logs_sample": false,
+    "notify_audit": false,
+    "on_missing_data": "default",
+    "include_tags": false,
+    "new_host_delay": 300,
+    "groupby_simple_monitor": false,
+    "silenced": {}
+  },
+  "priority": null,
+  "restriction_policy": {
+    "bindings": []
+  }
+}

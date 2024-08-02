@@ -1,0 +1,22 @@
+{
+  "id": 150268078,
+  "name": "[Network] Network Monitoring Should Be 0",
+  "type": "query alert",
+  "query": "avg(last_1d):sum:datadog.estimated_usage.network.hosts{*} >= 1",
+  "message": "{{#is_alert}}\n\nNetwork traffic monitoring has been detected, but the defined limit is 0, which may result in unexpected additional charges.\n\n**How to investigate and resolve:**\n\n1. **Check active network monitoring:** Use Datadog tools to identify any active network traffic monitoring.\n\n2. **Disable network monitoring:** If possible, disable all network traffic monitoring to avoid additional charges.\n\n3. **Review monitoring configuration:** Ensure that monitoring settings are correctly adjusted to avoid unintentional monitoring.\n\n4. **Assess the need for network monitoring:** If there is a need to monitor network traffic, consider alternatives or adjust the approach to minimize costs.\n\n5. **Monitor and adjust:** Continue monitoring the situation to ensure that no network traffic is being inadvertently monitored.\n\n{{/is_alert}}",
+  "tags": ["type:billing_monitor"],
+  "options": {
+    "thresholds": {
+      "critical": 1
+    },
+    "notify_audit": false,
+    "include_tags": false,
+    "notify_no_data": false,
+    "new_host_delay": 300,
+    "silenced": {}
+  },
+  "priority": null,
+  "restriction_policy": {
+    "bindings": []
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": 150258498,
+  "name": "[Metrics] Number of Custom Metrics Exceeding the Limit of 1k",
+  "type": "query alert",
+  "query": "avg(last_5m):sum:datadog.estimated_usage.metrics.custom{*} > 1000",
+  "message": "{{#is_alert}}\n\nThe number of custom metrics has exceeded the limit of 1,000, which may result in unexpected additional charges.\n\n**How to investigate and resolve:**\n\n1. **Check the count of custom metrics:** Use Datadog tools to list all active custom metrics.\n\n2. **Assess the necessity of each metric:** Determine if all metrics are necessary or if some can be removed or consolidated.\n\n3. **Disable unnecessary metrics:** Remove or disable custom metrics that are not essential for monitoring or that are not being used.\n\n4. **Optimize metric creation:** Review the custom metric creation processes to ensure that only the most relevant metrics are created and maintained.\n\n5. **Monitor and adjust:** Continue monitoring the number of custom metrics to avoid further exceedances and control costs.\n\n{{/is_alert}}",
+  "tags": ["type:billing_monitor"],
+  "options": {
+    "thresholds": {
+      "critical": 1000
+    },
+    "notify_audit": false,
+    "include_tags": false,
+    "notify_no_data": false,
+    "new_host_delay": 300,
+    "silenced": {}
+  },
+  "priority": null,
+  "restriction_policy": {
+    "bindings": []
+  }
+}

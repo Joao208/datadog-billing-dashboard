@@ -1,0 +1,22 @@
+{
+  "id": 150267346,
+  "name": "[APM] Number of Ingested Spans Exceeding 10M per Day",
+  "type": "query alert",
+  "query": "sum(last_1d):sum:datadog.estimated_usage.apm.ingested_spans{*}.as_count() > 10000000",
+  "message": "{{#is_alert}}\n\nThe number of ingested spans has exceeded the limit of 10 million per day, which may result in unexpected additional charges.\n\n**How to investigate and resolve:**\n\n1. **Check the volume of ingested spans:** Use Datadog tools to review the daily volume of ingested spans.\n\n2. **Analyze applications and services:** Identify which applications or services are generating the most spans.\n\n3. **Optimize instrumentation:** Review and adjust code instrumentation to reduce the volume of generated spans, disabling unnecessary or low-priority spans.\n\n4. **Implement span sampling:** Consider implementing a sampling strategy to reduce the number of ingested spans without losing critical information.\n\n5. **Monitor and adjust:** Continue monitoring the volume of ingested spans to avoid further exceedances and optimize span usage.\n\n{{/is_alert}}",
+  "tags": ["type:billing_monitor"],
+  "options": {
+    "thresholds": {
+      "critical": 10000000
+    },
+    "notify_audit": false,
+    "include_tags": false,
+    "notify_no_data": false,
+    "new_host_delay": 300,
+    "silenced": {}
+  },
+  "priority": null,
+  "restriction_policy": {
+    "bindings": []
+  }
+}

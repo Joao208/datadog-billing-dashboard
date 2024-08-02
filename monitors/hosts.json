@@ -1,0 +1,22 @@
+{
+  "id": 150258184,
+  "name": "[Hosts] Number of Hosts Exceeding the Limit of 10",
+  "type": "query alert",
+  "query": "avg(last_5m):sum:datadog.estimated_usage.hosts{*} > 10",
+  "message": "{{#is_alert}}\n\nThe number of active hosts has exceeded the limit of 10, which may result in unexpected additional charges.\n\n**How to investigate and resolve:**\n\n1. **Check the count of hosts:** Use Datadog tools or other monitoring tools to list all active hosts.\n\n2. **Analyze the need for additional hosts:** Determine if the extra hosts are necessary or if they were added by mistake.\n\n3. **Disable unnecessary hosts:** If possible, disable or remove hosts that are not essential for current operations.\n\n4. **Adjust scaling configuration:** Review and adjust auto-scaling settings to avoid excess hosts and, consequently, additional charges.\n\n5. **Monitor resource usage:** Ensure that resource usage is within expected limits to avoid overload and additional costs.\n\n{{/is_alert}}",
+  "tags": ["type:billing_monitor"],
+  "options": {
+    "thresholds": {
+      "critical": 10
+    },
+    "notify_audit": false,
+    "include_tags": false,
+    "notify_no_data": false,
+    "new_host_delay": 300,
+    "silenced": {}
+  },
+  "priority": null,
+  "restriction_policy": {
+    "bindings": []
+  }
+}

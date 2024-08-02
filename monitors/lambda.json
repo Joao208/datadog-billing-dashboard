@@ -1,0 +1,22 @@
+{
+  "id": 150268002,
+  "name": "[Lambda] Number of Monitored Lambda Functions Should Be 0",
+  "type": "query alert",
+  "query": "sum(last_1d):sum:datadog.estimated_usage.serverless.aws_lambda_functions{*} >= 1",
+  "message": "{{#is_alert}}\n\nOne or more Lambda functions have been detected as monitored, but the defined limit is 0, which may result in unexpected additional charges.\n\n**How to investigate and resolve:**\n\n1. **Check monitored Lambda functions:** Use Datadog tools to identify which Lambda functions are being monitored.\n\n2. **Disable monitoring:** If possible, disable monitoring of Lambda functions to avoid charges.\n\n3. **Review monitoring configuration:** Ensure that the monitoring configuration is correctly adjusted to avoid unintentional inclusion of Lambda functions.\n\n4. **Assess the need for monitoring:** If monitoring Lambda functions is necessary, review monitoring options to minimize costs.\n\n5. **Monitor and adjust:** Continue monitoring the status of Lambda functions to ensure that none are being inadvertently monitored.\n\n{{/is_alert}}",
+  "tags": ["type:billing_monitor"],
+  "options": {
+    "thresholds": {
+      "critical": 1
+    },
+    "notify_audit": false,
+    "include_tags": false,
+    "notify_no_data": false,
+    "new_host_delay": 300,
+    "silenced": {}
+  },
+  "priority": null,
+  "restriction_policy": {
+    "bindings": []
+  }
+}

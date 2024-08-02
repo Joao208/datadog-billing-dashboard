@@ -1,0 +1,22 @@
+{
+  "id": 150267899,
+  "name": "[Logs] Volume of Ingested Logs Exceeding 4GB per Day",
+  "type": "query alert",
+  "query": "avg(last_1d):sum:datadog.estimated_usage.logs.ingested_bytes{*} > 4000000000",
+  "message": "{{#is_alert}}\n\nThe volume of ingested logs has exceeded the limit of 4GB per day, which may result in unexpected additional charges.\n\n**How to investigate and resolve:**\n\n1. **Check the volume of ingested logs:** Use Datadog tools to review the daily volume of ingested logs.\n\n2. **Analyze log sources:** Identify which applications or services are generating large volumes of logs.\n\n3. **Optimize log generation:** Review log generation settings to minimize verbosity and disable unnecessary logs.\n\n4. **Implement log sampling and filtering:** Consider applying sampling or filtering strategies to ingest only the most important logs.\n\n5. **Monitor and adjust:** Continue monitoring the volume of ingested logs to avoid further exceedances and optimize log usage.\n\n{{/is_alert}}",
+  "tags": ["type:billing_monitor"],
+  "options": {
+    "thresholds": {
+      "critical": 4000000000
+    },
+    "notify_audit": false,
+    "include_tags": false,
+    "notify_no_data": false,
+    "new_host_delay": 300,
+    "silenced": {}
+  },
+  "priority": null,
+  "restriction_policy": {
+    "bindings": []
+  }
+}

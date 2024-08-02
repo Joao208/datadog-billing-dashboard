@@ -1,0 +1,22 @@
+{
+  "id": 150267466,
+  "name": "[APM] Number of Indexed Spans Exceeding 50k per Day",
+  "type": "query alert",
+  "query": "sum(last_1d):sum:datadog.estimated_usage.apm.indexed_spans{*}.as_count() > 50000",
+  "message": "{{#is_alert}}\n\nThe number of indexed spans has exceeded the limit of 50,000 per day, which may result in unexpected additional charges.\n\n**How to investigate and resolve:**\n\n1. **Check the volume of indexed spans:** Use Datadog tools to review the daily volume of indexed spans.\n\n2. **Analyze applications and services:** Identify which applications or services are generating a high volume of spans being indexed.\n\n3. **Optimize span indexing:** Review and adjust indexing configuration to ensure that only the most critical spans are indexed.\n\n4. **Implement filtering rules:** Consider implementing filtering rules to limit indexing to essential spans, reducing the total volume.\n\n5. **Monitor and adjust:** Continue monitoring the volume of indexed spans to avoid further exceedances and control costs.\n\n{{/is_alert}}",
+  "tags": ["type:billing_monitor"],
+  "options": {
+    "thresholds": {
+      "critical": 50000
+    },
+    "notify_audit": false,
+    "include_tags": false,
+    "notify_no_data": false,
+    "new_host_delay": 300,
+    "silenced": {}
+  },
+  "priority": null,
+  "restriction_policy": {
+    "bindings": []
+  }
+}

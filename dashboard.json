@@ -1,0 +1,1123 @@
+{
+    "title": "Datadog Billing",
+    "description": "",
+    "widgets": [
+        {
+            "id": 8714079241907402,
+            "definition": {
+                "type": "note",
+                "content": "Estimated cost in dollars",
+                "background_color": "vivid_green",
+                "font_size": "36",
+                "text_align": "left",
+                "vertical_align": "center",
+                "show_tick": true,
+                "tick_pos": "50%",
+                "tick_edge": "right",
+                "has_padding": true
+            },
+            "layout": {
+                "x": 0,
+                "y": 0,
+                "width": 12,
+                "height": 2
+            }
+        },
+        {
+            "id": 2752735755317028,
+            "definition": {
+                "type": "note",
+                "content": "Hired",
+                "background_color": "vivid_blue",
+                "font_size": "56",
+                "text_align": "left",
+                "vertical_align": "center",
+                "show_tick": true,
+                "tick_pos": "50%",
+                "tick_edge": "right",
+                "has_padding": true
+            },
+            "layout": {
+                "x": 0,
+                "y": 2,
+                "width": 4,
+                "height": 2
+            }
+        },
+        {
+            "id": 2575517617880228,
+            "definition": {
+                "title": "Lambda functions",
+                "title_size": "16",
+                "title_align": "left",
+                "type": "query_value",
+                "requests": [
+                    {
+                        "response_format": "scalar",
+                        "queries": [
+                            {
+                                "data_source": "metrics",
+                                "name": "query1",
+                                "query": "sum:datadog.estimated_usage.serverless.aws_lambda_functions{*}",
+                                "aggregator": "avg"
+                            }
+                        ],
+                        "conditional_formats": [
+                            {
+                                "comparator": "=",
+                                "value": 0,
+                                "palette": "white_on_green"
+                            },
+                            {
+                                "comparator": ">",
+                                "value": 0,
+                                "palette": "white_on_red"
+                            }
+                        ],
+                        "formulas": [
+                            {
+                                "formula": "query1"
+                            }
+                        ]
+                    }
+                ],
+                "autoscale": true,
+                "precision": 2
+            },
+            "layout": {
+                "x": 4,
+                "y": 2,
+                "width": 2,
+                "height": 2
+            }
+        },
+        {
+            "id": 4621593020137312,
+            "definition": {
+                "title": "Network hosts",
+                "title_size": "16",
+                "title_align": "left",
+                "type": "query_value",
+                "requests": [
+                    {
+                        "response_format": "scalar",
+                        "queries": [
+                            {
+                                "data_source": "metrics",
+                                "name": "query1",
+                                "query": "sum:datadog.estimated_usage.network.hosts{*}",
+                                "aggregator": "avg"
+                            }
+                        ],
+                        "conditional_formats": [
+                            {
+                                "comparator": "=",
+                                "value": 0,
+                                "palette": "white_on_green"
+                            },
+                            {
+                                "comparator": ">",
+                                "value": 0,
+                                "palette": "white_on_red"
+                            }
+                        ],
+                        "formulas": [
+                            {
+                                "formula": "query1"
+                            }
+                        ]
+                    }
+                ],
+                "autoscale": true,
+                "precision": 2
+            },
+            "layout": {
+                "x": 6,
+                "y": 2,
+                "width": 2,
+                "height": 2
+            }
+        },
+        {
+            "id": 7106476052745796,
+            "definition": {
+                "title": "Containers",
+                "title_size": "16",
+                "title_align": "left",
+                "type": "query_value",
+                "requests": [
+                    {
+                        "response_format": "scalar",
+                        "queries": [
+                            {
+                                "data_source": "metrics",
+                                "name": "query1",
+                                "query": "sum:datadog.estimated_usage.containers{*}",
+                                "aggregator": "avg"
+                            }
+                        ],
+                        "conditional_formats": [
+                            {
+                                "comparator": "<=",
+                                "value": 60,
+                                "palette": "white_on_green"
+                            },
+                            {
+                                "comparator": ">",
+                                "value": 60,
+                                "palette": "white_on_red"
+                            }
+                        ],
+                        "formulas": [
+                            {
+                                "formula": "query1"
+                            }
+                        ]
+                    }
+                ],
+                "autoscale": true,
+                "precision": 2
+            },
+            "layout": {
+                "x": 8,
+                "y": 2,
+                "width": 2,
+                "height": 2
+            }
+        },
+        {
+            "id": 8377191080179542,
+            "definition": {
+                "title": "Ingested Spans",
+                "title_size": "16",
+                "title_align": "left",
+                "type": "query_value",
+                "requests": [
+                    {
+                        "response_format": "scalar",
+                        "queries": [
+                            {
+                                "data_source": "metrics",
+                                "name": "query1",
+                                "query": "sum:datadog.estimated_usage.apm.ingested_spans{*}.as_count()",
+                                "aggregator": "avg"
+                            }
+                        ],
+                        "conditional_formats": [
+                            {
+                                "comparator": "<=",
+                                "value": 10000000,
+                                "palette": "white_on_green"
+                            },
+                            {
+                                "comparator": ">",
+                                "value": 10000000,
+                                "palette": "white_on_red"
+                            }
+                        ],
+                        "formulas": [
+                            {
+                                "formula": "query1"
+                            }
+                        ]
+                    }
+                ],
+                "autoscale": true,
+                "precision": 2
+            },
+            "layout": {
+                "x": 10,
+                "y": 2,
+                "width": 2,
+                "height": 2
+            }
+        },
+        {
+            "id": 179097193937782,
+            "definition": {
+                "title": "Billing Monitors",
+                "type": "manage_status",
+                "display_format": "countsAndList",
+                "color_preference": "background",
+                "hide_zero_counts": true,
+                "show_status": true,
+                "last_triggered_format": "relative",
+                "query": "tag:type:billing_monitor",
+                "sort": "status,asc",
+                "count": 50,
+                "start": 0,
+                "summary_type": "combined",
+                "show_priority": false,
+                "show_last_triggered": false
+            },
+            "layout": {
+                "x": 0,
+                "y": 4,
+                "width": 3,
+                "height": 5
+            }
+        },
+        {
+            "id": 6121572371330938,
+            "definition": {
+                "type": "note",
+                "content": "APM",
+                "background_color": "vivid_blue",
+                "font_size": "36",
+                "text_align": "center",
+                "vertical_align": "center",
+                "show_tick": true,
+                "tick_pos": "50%",
+                "tick_edge": "bottom",
+                "has_padding": true
+            },
+            "layout": {
+                "x": 3,
+                "y": 4,
+                "width": 5,
+                "height": 1
+            }
+        },
+        {
+            "id": 1874984942910088,
+            "definition": {
+                "type": "note",
+                "content": "Logs",
+                "background_color": "vivid_blue",
+                "font_size": "36",
+                "text_align": "center",
+                "vertical_align": "center",
+                "show_tick": true,
+                "tick_pos": "50%",
+                "tick_edge": "bottom",
+                "has_padding": true
+            },
+            "layout": {
+                "x": 8,
+                "y": 4,
+                "width": 4,
+                "height": 1
+            }
+        },
+        {
+            "id": 8088624299767118,
+            "definition": {
+                "title": "Ingested Spans",
+                "title_size": "16",
+                "title_align": "left",
+                "show_legend": true,
+                "legend_layout": "auto",
+                "legend_columns": [
+                    "avg",
+                    "min",
+                    "max",
+                    "value",
+                    "sum"
+                ],
+                "type": "timeseries",
+                "requests": [
+                    {
+                        "formulas": [
+                            {
+                                "formula": "query1"
+                            }
+                        ],
+                        "queries": [
+                            {
+                                "data_source": "metrics",
+                                "name": "query1",
+                                "query": "sum:datadog.estimated_usage.apm.ingested_spans{*}.as_count()"
+                            }
+                        ],
+                        "response_format": "timeseries",
+                        "style": {
+                            "palette": "dog_classic",
+                            "order_by": "values",
+                            "color_order": "shuffled",
+                            "line_type": "solid",
+                            "line_width": "normal"
+                        },
+                        "display_type": "line"
+                    }
+                ]
+            },
+            "layout": {
+                "x": 3,
+                "y": 5,
+                "width": 5,
+                "height": 2
+            }
+        },
+        {
+            "id": 1050751447767614,
+            "definition": {
+                "title": "Ingested logs",
+                "title_size": "16",
+                "title_align": "left",
+                "show_legend": true,
+                "legend_layout": "auto",
+                "legend_columns": [
+                    "avg",
+                    "min",
+                    "max",
+                    "value",
+                    "sum"
+                ],
+                "type": "timeseries",
+                "requests": [
+                    {
+                        "formulas": [
+                            {
+                                "formula": "query1"
+                            }
+                        ],
+                        "queries": [
+                            {
+                                "data_source": "metrics",
+                                "name": "query1",
+                                "query": "sum:datadog.estimated_usage.logs.ingested_bytes{*}"
+                            }
+                        ],
+                        "response_format": "timeseries",
+                        "style": {
+                            "palette": "dog_classic",
+                            "order_by": "values",
+                            "color_order": "shuffled",
+                            "line_type": "solid",
+                            "line_width": "normal"
+                        },
+                        "display_type": "line"
+                    }
+                ]
+            },
+            "layout": {
+                "x": 8,
+                "y": 5,
+                "width": 4,
+                "height": 2
+            }
+        },
+        {
+            "id": 4851958280452198,
+            "definition": {
+                "title": "APM Hosts",
+                "title_size": "16",
+                "title_align": "left",
+                "show_legend": true,
+                "legend_layout": "auto",
+                "legend_columns": [
+                    "avg",
+                    "min",
+                    "max",
+                    "value",
+                    "sum"
+                ],
+                "type": "timeseries",
+                "requests": [
+                    {
+                        "formulas": [
+                            {
+                                "formula": "query1"
+                            }
+                        ],
+                        "queries": [
+                            {
+                                "data_source": "metrics",
+                                "name": "query1",
+                                "query": "sum:datadog.estimated_usage.apm_hosts{*}"
+                            }
+                        ],
+                        "response_format": "timeseries",
+                        "style": {
+                            "palette": "dog_classic",
+                            "order_by": "values",
+                            "color_order": "shuffled",
+                            "line_type": "solid",
+                            "line_width": "normal"
+                        },
+                        "display_type": "line"
+                    }
+                ]
+            },
+            "layout": {
+                "x": 3,
+                "y": 7,
+                "width": 5,
+                "height": 2
+            }
+        },
+        {
+            "id": 58241463800044,
+            "definition": {
+                "title": "Indexed logs",
+                "title_size": "16",
+                "title_align": "left",
+                "show_legend": true,
+                "legend_layout": "auto",
+                "legend_columns": [
+                    "avg",
+                    "min",
+                    "max",
+                    "value",
+                    "sum"
+                ],
+                "type": "timeseries",
+                "requests": [
+                    {
+                        "formulas": [
+                            {
+                                "formula": "query1"
+                            }
+                        ],
+                        "queries": [
+                            {
+                                "data_source": "logs",
+                                "name": "query1",
+                                "search": {
+                                    "query": ""
+                                },
+                                "indexes": [
+                                    "*"
+                                ],
+                                "compute": {
+                                    "aggregation": "count"
+                                },
+                                "group_by": [],
+                                "storage": "hot"
+                            }
+                        ],
+                        "response_format": "timeseries",
+                        "style": {
+                            "palette": "dog_classic",
+                            "order_by": "values",
+                            "color_order": "shuffled",
+                            "line_type": "solid",
+                            "line_width": "normal"
+                        },
+                        "display_type": "line"
+                    }
+                ]
+            },
+            "layout": {
+                "x": 8,
+                "y": 7,
+                "width": 4,
+                "height": 2
+            }
+        },
+        {
+            "id": 6222151949943404,
+            "definition": {
+                "type": "note",
+                "content": "This is a Datadog dashboard titled “Datadog Billing,” providing a detailed overview of resource usage and activities related to monitoring and billing. The main section is divided into three categories: APM, Logs, and Infrastructure.\n\nAt the top, several key indicators are displayed, including:\n- Containers\n- Ingested Spans\n- APM Hosts\n- Indexed Spans\n- Custom Metrics\n- Ingested Logs\n- Indexed Logs\n- Hosts\n\nBelow these indicators, there are detailed graphs showing the behavior of ingested spans, ingested logs, hosts, containers, custom metrics, and more over time. Additionally, a section on the left displays the billing monitors, indicating the status of alerts and OKs for different metrics, such as the number of ingested spans and logs, among others.\n\nThe “Billing Monitors” section shows active alerts and OKs, providing a quick view of areas that need attention.\n\nThis dashboard is an essential tool for monitoring and managing resource usage and associated costs, ensuring efficient operations and staying within budget.",
+                "background_color": "white",
+                "font_size": "16",
+                "text_align": "left",
+                "vertical_align": "top",
+                "show_tick": false,
+                "tick_pos": "50%",
+                "tick_edge": "left",
+                "has_padding": true
+            },
+            "layout": {
+                "x": 0,
+                "y": 9,
+                "width": 3,
+                "height": 3
+            }
+        },
+        {
+            "id": 5172014870422578,
+            "definition": {
+                "title": "Indexed Spans",
+                "title_size": "16",
+                "title_align": "left",
+                "show_legend": true,
+                "legend_layout": "auto",
+                "legend_columns": [
+                    "avg",
+                    "min",
+                    "max",
+                    "value",
+                    "sum"
+                ],
+                "type": "timeseries",
+                "requests": [
+                    {
+                        "formulas": [
+                            {
+                                "formula": "query1"
+                            }
+                        ],
+                        "queries": [
+                            {
+                                "data_source": "metrics",
+                                "name": "query1",
+                                "query": "sum:datadog.estimated_usage.apm.indexed_spans{*}.as_count()"
+                            }
+                        ],
+                        "response_format": "timeseries",
+                        "style": {
+                            "palette": "dog_classic",
+                            "order_by": "values",
+                            "color_order": "shuffled",
+                            "line_type": "solid",
+                            "line_width": "normal"
+                        },
+                        "display_type": "line"
+                    }
+                ]
+            },
+            "layout": {
+                "x": 3,
+                "y": 9,
+                "width": 5,
+                "height": 2
+            }
+        },
+        {
+            "id": 8272555576613012,
+            "definition": {
+                "title": "Estimated cost",
+                "title_size": "16",
+                "title_align": "left",
+                "type": "query_value",
+                "requests": [
+                    {
+                        "response_format": "scalar",
+                        "queries": [
+                            {
+                                "data_source": "metrics",
+                                "name": "query1",
+                                "query": "sum:datadog.estimated_usage.hosts{*}",
+                                "aggregator": "avg"
+                            },
+                            {
+                                "data_source": "logs",
+                                "name": "query2",
+                                "indexes": [
+                                    "*"
+                                ],
+                                "compute": {
+                                    "aggregation": "count"
+                                },
+                                "group_by": [],
+                                "search": {
+                                    "query": ""
+                                },
+                                "storage": "hot"
+                            },
+                            {
+                                "data_source": "metrics",
+                                "name": "query3",
+                                "query": "sum:datadog.estimated_usage.logs.ingested_bytes{*}",
+                                "aggregator": "avg"
+                            },
+                            {
+                                "data_source": "metrics",
+                                "name": "query4",
+                                "query": "sum:datadog.estimated_usage.apm_hosts{*}",
+                                "aggregator": "avg"
+                            }
+                        ],
+                        "conditional_formats": [
+                            {
+                                "comparator": "<=",
+                                "value": 800,
+                                "palette": "white_on_green"
+                            },
+                            {
+                                "comparator": ">",
+                                "value": 800,
+                                "palette": "white_on_red"
+                            }
+                        ],
+                        "formulas": [
+                            {
+                                "formula": "(query1 * 21) + (query2 / 1000000 * 1.27) + ((query3 / 1073741824) * 0.1) + (query4 * 36)",
+                                "number_format": {
+                                    "unit": {
+                                        "type": "custom_unit_label",
+                                        "label": "USD"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "autoscale": true,
+                "precision": 2
+            },
+            "layout": {
+                "x": 0,
+                "y": 0,
+                "width": 12,
+                "height": 2,
+                "is_column_break": true
+            }
+        },
+        {
+            "id": 4619427904251438,
+            "definition": {
+                "title": "APM Hosts",
+                "title_size": "16",
+                "title_align": "left",
+                "type": "query_value",
+                "requests": [
+                    {
+                        "response_format": "scalar",
+                        "queries": [
+                            {
+                                "name": "query1",
+                                "data_source": "metrics",
+                                "query": "sum:datadog.estimated_usage.apm_hosts{*}",
+                                "aggregator": "avg"
+                            }
+                        ],
+                        "conditional_formats": [
+                            {
+                                "comparator": "<=",
+                                "value": 10,
+                                "palette": "white_on_green"
+                            },
+                            {
+                                "comparator": ">",
+                                "value": 10,
+                                "palette": "white_on_red"
+                            }
+                        ],
+                        "formulas": [
+                            {
+                                "formula": "query1"
+                            }
+                        ]
+                    }
+                ],
+                "autoscale": true,
+                "precision": 2
+            },
+            "layout": {
+                "x": 0,
+                "y": 2,
+                "width": 2,
+                "height": 2
+            }
+        },
+        {
+            "id": 200791352839056,
+            "definition": {
+                "title": "Indexed Spans",
+                "title_size": "16",
+                "title_align": "left",
+                "type": "query_value",
+                "requests": [
+                    {
+                        "response_format": "scalar",
+                        "queries": [
+                            {
+                                "name": "query1",
+                                "data_source": "metrics",
+                                "query": "sum:datadog.estimated_usage.apm.indexed_spans{*}.as_count()",
+                                "aggregator": "avg"
+                            }
+                        ],
+                        "conditional_formats": [
+                            {
+                                "comparator": "<=",
+                                "value": 50000,
+                                "palette": "white_on_green"
+                            },
+                            {
+                                "comparator": ">",
+                                "value": 50000,
+                                "palette": "white_on_red"
+                            }
+                        ],
+                        "formulas": [
+                            {
+                                "formula": "query1"
+                            }
+                        ]
+                    }
+                ],
+                "autoscale": true,
+                "precision": 2
+            },
+            "layout": {
+                "x": 2,
+                "y": 2,
+                "width": 2,
+                "height": 2
+            }
+        },
+        {
+            "id": 3157807136316944,
+            "definition": {
+                "title": "Custom Metrics",
+                "title_size": "16",
+                "title_align": "left",
+                "type": "query_value",
+                "requests": [
+                    {
+                        "response_format": "scalar",
+                        "queries": [
+                            {
+                                "name": "query1",
+                                "data_source": "metrics",
+                                "query": "sum:datadog.estimated_usage.metrics.custom{*}",
+                                "aggregator": "avg"
+                            }
+                        ],
+                        "conditional_formats": [
+                            {
+                                "comparator": "<=",
+                                "value": 1000,
+                                "palette": "white_on_green"
+                            },
+                            {
+                                "comparator": ">",
+                                "value": 1000,
+                                "palette": "white_on_red"
+                            }
+                        ],
+                        "formulas": [
+                            {
+                                "formula": "query1"
+                            }
+                        ]
+                    }
+                ],
+                "autoscale": true,
+                "precision": 2
+            },
+            "layout": {
+                "x": 4,
+                "y": 2,
+                "width": 2,
+                "height": 2
+            }
+        },
+        {
+            "id": 7316514828537904,
+            "definition": {
+                "title": "Ingested Logs",
+                "title_size": "16",
+                "title_align": "left",
+                "type": "query_value",
+                "requests": [
+                    {
+                        "response_format": "scalar",
+                        "queries": [
+                            {
+                                "name": "query1",
+                                "data_source": "metrics",
+                                "query": "sum:datadog.estimated_usage.logs.ingested_bytes{*}",
+                                "aggregator": "avg"
+                            }
+                        ],
+                        "conditional_formats": [
+                            {
+                                "comparator": "<=",
+                                "value": 4000000000,
+                                "palette": "white_on_green"
+                            },
+                            {
+                                "comparator": ">",
+                                "value": 4000000000,
+                                "palette": "white_on_red"
+                            }
+                        ],
+                        "formulas": [
+                            {
+                                "formula": "query1"
+                            }
+                        ]
+                    }
+                ],
+                "autoscale": true,
+                "precision": 2
+            },
+            "layout": {
+                "x": 6,
+                "y": 2,
+                "width": 2,
+                "height": 2
+            }
+        },
+        {
+            "id": 6570778507575568,
+            "definition": {
+                "title": "Indexed Logs",
+                "title_size": "16",
+                "title_align": "left",
+                "type": "query_value",
+                "requests": [
+                    {
+                        "response_format": "scalar",
+                        "queries": [
+                            {
+                                "data_source": "logs",
+                                "name": "query1",
+                                "search": {
+                                    "query": ""
+                                },
+                                "indexes": [
+                                    "*"
+                                ],
+                                "compute": {
+                                    "aggregation": "count"
+                                },
+                                "group_by": [],
+                                "storage": "hot"
+                            }
+                        ],
+                        "conditional_formats": [
+                            {
+                                "comparator": "<=",
+                                "value": 5000000,
+                                "palette": "white_on_green"
+                            },
+                            {
+                                "comparator": ">",
+                                "value": 5000000,
+                                "palette": "white_on_red"
+                            }
+                        ],
+                        "formulas": [
+                            {
+                                "formula": "query1"
+                            }
+                        ]
+                    }
+                ],
+                "autoscale": true,
+                "precision": 2
+            },
+            "layout": {
+                "x": 8,
+                "y": 2,
+                "width": 2,
+                "height": 2
+            }
+        },
+        {
+            "id": 1396239267048548,
+            "definition": {
+                "title": "Hosts",
+                "title_size": "16",
+                "title_align": "left",
+                "type": "query_value",
+                "requests": [
+                    {
+                        "response_format": "scalar",
+                        "queries": [
+                            {
+                                "name": "query1",
+                                "data_source": "metrics",
+                                "query": "sum:datadog.estimated_usage.hosts{*}",
+                                "aggregator": "avg"
+                            }
+                        ],
+                        "conditional_formats": [
+                            {
+                                "comparator": "<=",
+                                "value": 10,
+                                "palette": "white_on_green"
+                            },
+                            {
+                                "comparator": ">",
+                                "value": 10,
+                                "palette": "white_on_red"
+                            }
+                        ],
+                        "formulas": [
+                            {
+                                "formula": "query1"
+                            }
+                        ]
+                    }
+                ],
+                "autoscale": true,
+                "precision": 2
+            },
+            "layout": {
+                "x": 10,
+                "y": 2,
+                "width": 2,
+                "height": 2
+            }
+        },
+        {
+            "id": 5803337191001058,
+            "definition": {
+                "type": "note",
+                "content": "Infraestructure",
+                "background_color": "vivid_blue",
+                "font_size": "36",
+                "text_align": "center",
+                "vertical_align": "center",
+                "show_tick": true,
+                "tick_pos": "50%",
+                "tick_edge": "bottom",
+                "has_padding": true
+            },
+            "layout": {
+                "x": 0,
+                "y": 4,
+                "width": 12,
+                "height": 1
+            }
+        },
+        {
+            "id": 2669389742271758,
+            "definition": {
+                "title": "Hosts",
+                "title_size": "16",
+                "title_align": "left",
+                "show_legend": true,
+                "legend_layout": "auto",
+                "legend_columns": [
+                    "avg",
+                    "min",
+                    "max",
+                    "value",
+                    "sum"
+                ],
+                "type": "timeseries",
+                "requests": [
+                    {
+                        "formulas": [
+                            {
+                                "formula": "query1"
+                            }
+                        ],
+                        "queries": [
+                            {
+                                "data_source": "metrics",
+                                "name": "query1",
+                                "query": "sum:datadog.estimated_usage.hosts{*}"
+                            }
+                        ],
+                        "response_format": "timeseries",
+                        "style": {
+                            "palette": "dog_classic",
+                            "order_by": "values",
+                            "color_order": "shuffled",
+                            "line_type": "solid",
+                            "line_width": "normal"
+                        },
+                        "display_type": "line"
+                    }
+                ]
+            },
+            "layout": {
+                "x": 0,
+                "y": 5,
+                "width": 12,
+                "height": 2
+            }
+        },
+        {
+            "id": 636376215263628,
+            "definition": {
+                "title": "Containers",
+                "title_size": "16",
+                "title_align": "left",
+                "show_legend": true,
+                "legend_layout": "auto",
+                "legend_columns": [
+                    "avg",
+                    "min",
+                    "max",
+                    "value",
+                    "sum"
+                ],
+                "type": "timeseries",
+                "requests": [
+                    {
+                        "formulas": [
+                            {
+                                "formula": "query1"
+                            }
+                        ],
+                        "queries": [
+                            {
+                                "data_source": "metrics",
+                                "name": "query1",
+                                "query": "sum:datadog.estimated_usage.containers{*}"
+                            }
+                        ],
+                        "response_format": "timeseries",
+                        "style": {
+                            "palette": "dog_classic",
+                            "order_by": "values",
+                            "color_order": "shuffled",
+                            "line_type": "solid",
+                            "line_width": "normal"
+                        },
+                        "display_type": "line"
+                    }
+                ]
+            },
+            "layout": {
+                "x": 0,
+                "y": 7,
+                "width": 12,
+                "height": 2
+            }
+        },
+        {
+            "id": 2028182374458106,
+            "definition": {
+                "title": "Custom metrics",
+                "title_size": "16",
+                "title_align": "left",
+                "show_legend": true,
+                "legend_layout": "auto",
+                "legend_columns": [
+                    "avg",
+                    "min",
+                    "max",
+                    "value",
+                    "sum"
+                ],
+                "type": "timeseries",
+                "requests": [
+                    {
+                        "formulas": [
+                            {
+                                "formula": "query1"
+                            }
+                        ],
+                        "queries": [
+                            {
+                                "data_source": "metrics",
+                                "name": "query1",
+                                "query": "sum:datadog.estimated_usage.metrics.custom{*}"
+                            }
+                        ],
+                        "response_format": "timeseries",
+                        "style": {
+                            "palette": "dog_classic",
+                            "order_by": "values",
+                            "color_order": "shuffled",
+                            "line_type": "solid",
+                            "line_width": "normal"
+                        },
+                        "display_type": "line"
+                    }
+                ]
+            },
+            "layout": {
+                "x": 0,
+                "y": 9,
+                "width": 12,
+                "height": 2
+            }
+        }
+    ],
+    "template_variables": [],
+    "layout_type": "ordered",
+    "notify_list": [],
+    "reflow_type": "fixed"
+}

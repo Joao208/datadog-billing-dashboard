@@ -1,0 +1,22 @@
+{
+  "id": 150258266,
+  "name": "[APM] Number of APM Hosts Exceeding the Limit of 10",
+  "type": "query alert",
+  "query": "avg(last_5m):sum:datadog.estimated_usage.apm_hosts{*} > 10",
+  "message": "{{#is_alert}}\n\nThe number of hosts with active APM has exceeded the limit of 10, which may result in unexpected additional charges.\n\n**How to investigate and resolve:**\n\n1. **Check the count of hosts with APM:** Use Datadog tools or other monitoring tools to list all hosts with active APM.\n\n2. **Evaluate the necessity of additional hosts:** Determine if all hosts with APM are necessary or if there are duplications or misconfigurations.\n\n3. **Disable APM on unnecessary hosts:** If possible, disable APM on hosts that are not critical for performance analysis or are not being actively used.\n\n4. **Review APM settings:** Ensure that APM is configured only for essential services and hosts.\n\n5. **Continuously monitor:** Continue monitoring the count of hosts with APM to avoid future overages and potential additional costs.\n\n{{/is_alert}}",
+  "tags": ["type:billing_monitor"],
+  "options": {
+    "thresholds": {
+      "critical": 10
+    },
+    "notify_audit": false,
+    "include_tags": false,
+    "notify_no_data": false,
+    "new_host_delay": 300,
+    "silenced": {}
+  },
+  "priority": null,
+  "restriction_policy": {
+    "bindings": []
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": 150271048,
+  "name": "[Containers] Number of Containers Exceeding the Limit of 60",
+  "type": "query alert",
+  "query": "avg(last_1d):sum:datadog.estimated_usage.containers{*} > 60",
+  "message": "{{#is_alert}}\n\nThe number of active containers has exceeded the limit of 60, which may result in unexpected additional charges.\n\n**How to investigate and resolve:**\n\n1. **Check the count of active containers:** Use Datadog tools to list all active containers.\n\n2. **Analyze the need for additional containers:** Determine if all containers are necessary or if there are duplications or misconfigurations.\n\n3. **Disable unnecessary containers:** If possible, disable or remove containers that are not essential for current operations.\n\n4. **Adjust scaling configuration:** Review auto-scaling settings and adjust as needed to avoid excess containers.\n\n5. **Continuously monitor:** Continue monitoring the number of containers to avoid future overages and potential additional costs.\n\n{{/is_alert}}",
+  "tags": ["type:billing_monitor"],
+  "options": {
+    "thresholds": {
+      "critical": 60
+    },
+    "notify_audit": false,
+    "include_tags": false,
+    "notify_no_data": false,
+    "new_host_delay": 300,
+    "silenced": {}
+  },
+  "priority": null,
+  "restriction_policy": {
+    "bindings": []
+  }
+}
